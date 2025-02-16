@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff6b6b, #f7b733);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #f7b733;
+        }
+
+        .fact {
+            margin-top: 20px;
+            font-size: 18px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Mars Facts</h1>
+        <button id="fact-button">Show Random Fact</button>
+        <p id="fact-display" class="fact"></p>
+    </div>
+    <script>
+        const marsFacts = [
+            { "fact": "Mars is the fourth planet from the Sun." },
+            { "fact": "Mars is often referred to as the 'Red Planet' due to its reddish appearance." },
+            { "fact": "The surface of Mars is covered with iron oxide, commonly known as rust." },
+            { "fact": "Mars has the largest volcano in the solar system, Olympus Mons, which is about 13.6 miles (22 kilometers) high." },
+            { "fact": "Mars has two small moons, Phobos and Deimos, which are thought to be captured asteroids." },
+            { "fact": "A day on Mars, known as a sol, is approximately 24.6 hours long." },
+            { "fact": "Mars has seasons similar to Earth due to its axial tilt of 25 degrees." },
+            { "fact": "The atmosphere of Mars is very thin, composed mostly of carbon dioxide (about 95%)." },
+            { "fact": "Mars has the largest dust storms in the solar system, which can cover the entire planet." },
+            { "fact": "Water ice exists on Mars, primarily at the polar ice caps and beneath the surface." }
+        ];
+
+        const factButton = document.getElementById('fact-button');
+        const factDisplay = document.getElementById('fact-display');
+
+        factButton.addEventListener('click', () => {
+            const randomIndex = Math.floor(Math.random() * marsFacts.length);
+            factDisplay.textContent = marsFacts[randomIndex].fact;
+            factDisplay.style.opacity = 1; // Fade in effect
+            setTimeout(() => {
+                factDisplay.style.opacity = 0; // Fade out effect after a short delay
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
